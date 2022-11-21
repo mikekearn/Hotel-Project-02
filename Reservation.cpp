@@ -1,6 +1,6 @@
 #include "Reservation.h"
 
-using namespace std;
+//using namespace std;
 
 // Separating out the header for easier customizing and re-use when needed.
 void reservations::displayHeader()
@@ -16,6 +16,70 @@ void reservations::displayHeader()
 void reservations::mainMenu()
 {
 	// Possible main menu revamp will go here.
+	bool loopMainMenu = true;
+	int userChoice = 0;
+	string userString = "0";
+
+	while (userChoice != 3) {
+		cout << endl;
+		cout << "     What would you like to do?\n";
+		cout << "       1. Reserve a room.\n";
+		cout << "       2. View current inventory and total daily revenue.\n";
+		cout << "       3. Exit the program.\n";
+		cout << endl;
+		cout << "     Please choose an option (1-3): ";
+		// Standardising language throughout program.
+		// cout << "     Enter an option: ";
+		cin >> userString;
+		cin.clear();
+		cin.ignore(1000, '\n');
+		if (userString.length() > 1)
+		{
+			userChoice = 0;
+		}
+		else
+		{
+			try
+			{
+				userChoice = stoi(userString);
+			}
+			catch (invalid_argument)
+			{
+				// Another try catch as in Reservation.cpp for the stoi function to work correctly. Testing various input methods in this program versus last one.
+				// cout << "     That was not a valid input, please try again.";
+				// The cout isn't necessary after testing; default behavior below will catch the error as 'else' option.
+			}
+		}
+
+		if (userChoice == 1)
+		{
+			// oReservations.reserveRoomMenu();
+			// Moved from main function. Need to revamp.
+		}
+		else if (userChoice == 2)
+		{
+			// oReservations.displayHeader();
+			// oReservations.displayRoomSummary();
+			// Moved from main function. Need to revamp.
+		}
+		else if (userChoice == 3)
+		{
+			// Brief exit message before program quits.
+			cout << endl;
+			cout << "               Thanks for using\n";
+			cout << "          Hotel Griffin Booking Software.\n";
+			cout << "               Have a nice day.";
+			cout << endl;
+		}
+		else
+		{
+			cout << endl;
+			cout << "     That was not a valid input, please try again.";
+			cout << endl;
+		}
+
+		cout << endl;
+	}
 }
 
 void reservations::reserveRoomMenu()

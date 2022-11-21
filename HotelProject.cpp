@@ -26,20 +26,16 @@ int main()
 		oReservations.displayHeader();
 		cout << endl;
 		// Will have to revamp main menu to require input of date first.
-		cout << "     What would you like to do?\n";
-		cout << "       1. Reserve a room.\n";
-		cout << "       2. View current inventory and total daily revenue.\n";
-		cout << "       3. Exit the program.\n";
-		cout << endl;
-		cout << "     Please choose an option (1-3): ";
-		// Standardising language throughout program.
+		cout << "     Please enter today's date to begin (MMDDYYYY): ";
 		// cout << "     Enter an option: ";
 		cin >> userString;
 		cin.clear();
 		cin.ignore(1000, '\n');
-		if (userString.length() > 1)
+		if (userString.length() != 8 )
 		{
-			userChoice = 0;
+			cout << endl;
+			cout << "     That was not a valid input, please try again.";
+			cout << endl;
 		}
 		else
 		{
@@ -55,34 +51,10 @@ int main()
 			}
 		}
 
-		if (userChoice == 1)
-		{
-			oReservations.reserveRoomMenu();
-		}
-		else if (userChoice == 2)
-		{
-			oReservations.displayHeader();
-			// oReservations.displayRoomOptions();
-			// Moving these options entirely to room summary for slightly different formatting.
-			oReservations.displayRoomSummary();
-		}
-		else if (userChoice == 3)
-		{
-			// Brief exit message before program quits.
-			cout << endl;
-			cout << "               Thanks for using\n";
-			cout << "          Hotel Griffin Booking Software.\n";
-			cout << "               Have a nice day.";
-			cout << endl;
-		}
-		else
-		{
-			cout << endl;
-			cout << "     That was not a valid input, please try again.";
-			cout << endl;
-		}
-
-		cout << endl;
+		// Some testing outputs
+		cout << "\n     You entered: " << userString << endl;
+		
+		// Bulk of main menu removed to make space for date implementation.
 	}
 	
 
