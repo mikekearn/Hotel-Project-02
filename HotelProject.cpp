@@ -31,7 +31,13 @@ int main()
 		cin >> userString;
 		cin.clear();
 		cin.ignore(1000, '\n');
-		if (userString.length() != 8 )
+		if (userString == "- 1")
+		{
+			cout << "Thanks for using this program. Goodbye.";
+			cout << endl;
+			break;
+		}
+		else if (userString.length() != 8 )
 		{
 			cout << endl;
 			cout << "     That was not a valid input, please try again.";
