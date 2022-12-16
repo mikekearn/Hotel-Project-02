@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <fstream>
 
 #include "Room.h"
 #include "Reservation.h"
@@ -26,15 +27,21 @@ int main()
 		oReservations.displayHeader();
 		cout << endl;
 		// Will have to revamp main menu to require input of date first.
-		cout << "     Please enter today's date to begin (MMDDYYYY): ";
+		cout << "     Please enter today's date to begin (MMDDYYYY) or -1 to quit: ";
 		// cout << "     Enter an option: ";
 		cin >> userString;
 		cin.clear();
 		cin.ignore(1000, '\n');
-		if (userString == "- 1")
+		if (userString == "-1")
 		{
-			cout << "Thanks for using this program. Goodbye.";
 			cout << endl;
+			cout << "                              Thanks for using\n";
+			cout << "                         Hotel Griffin Booking Software.\n";
+			cout << "                              Have a nice day.";
+			cout << endl;
+			cout << endl;
+			//cout << "     Thanks for using this program. Goodbye.";
+			//cout << endl;
 			break;
 		}
 		else if (userString.length() != 8 )
@@ -48,6 +55,11 @@ int main()
 			try
 			{
 				userChoice = stoi(userString);
+
+				cout << "\n     You entered: " << userString << endl;
+				string filename = userString + ".txt";
+				ofstream{ filename.c_str() };
+				oReservations.mainMenu();
 			}
 			catch (invalid_argument)
 			{
@@ -58,7 +70,7 @@ int main()
 		}
 
 		// Some testing outputs
-		cout << "\n     You entered: " << userString << endl;
+		// cout << "\n     You entered: " << userString << endl;
 		
 		// Bulk of main menu removed to make space for date implementation.
 	}

@@ -6,10 +6,10 @@
 void reservations::displayHeader()
 {
 	cout << endl;
-	cout << "            **********************************" << endl;
-	cout << "            * HOTEL GRIFFIN BOOKING SOFTWARE *" << endl;
-	cout << "            **********************************" << endl;
-	cout << "	                 (v0.3.1)" << endl; // Trying to keep version number consistent with my commits.
+	cout << "                      **********************************" << endl;
+	cout << "                      * HOTEL GRIFFIN BOOKING SOFTWARE *" << endl;
+	cout << "                      **********************************" << endl;
+	cout << "	                           (v0.1.2)" << endl; // Trying to keep version number consistent with my commits.
 	cout << endl;
 }
 
@@ -22,12 +22,12 @@ void reservations::mainMenu()
 
 	while (userChoice != 3) {
 		cout << endl;
-		cout << "     What would you like to do?\n";
-		cout << "       1. Reserve a room.\n";
-		cout << "       2. View current inventory and total daily revenue.\n";
-		cout << "       3. Exit the program.\n";
+		cout << "          What would you like to do?\n";
+		cout << "            1. Reserve a room.\n";
+		cout << "            2. View current inventory and total daily revenue.\n";
+		cout << "            3. Return to date selection.\n";
 		cout << endl;
-		cout << "     Please choose an option (1-3): ";
+		cout << "          Please choose an option (1-3): ";
 		// Standardising language throughout program.
 		// cout << "     Enter an option: ";
 		cin >> userString;
@@ -53,28 +53,25 @@ void reservations::mainMenu()
 
 		if (userChoice == 1)
 		{
-			// oReservations.reserveRoomMenu();
-			// Moved from main function. Need to revamp.
+			// Choice 1 should open reservations submenu.
+			reservations::reserveRoomMenu();
 		}
 		else if (userChoice == 2)
 		{
-			// oReservations.displayHeader();
-			// oReservations.displayRoomSummary();
-			// Moved from main function. Need to revamp.
+			// Choice 2 should display rooms and summary option.
+			reservations::displayRoomOptions();
 		}
 		else if (userChoice == 3)
 		{
-			// Brief exit message before program quits.
+			// Choice 3 should return to date selection main menu now.
 			cout << endl;
-			cout << "               Thanks for using\n";
-			cout << "          Hotel Griffin Booking Software.\n";
-			cout << "               Have a nice day.";
 			cout << endl;
+			break;
 		}
 		else
 		{
 			cout << endl;
-			cout << "     That was not a valid input, please try again.";
+			cout << "          That was not a valid input, please try again.";
 			cout << endl;
 		}
 
