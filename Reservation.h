@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 
 using namespace std;
 
@@ -23,11 +24,12 @@ public:
 	// Various menu displays and the total function at the end.
 	// (I didn't use the getTotal function name but it does what is requested in the assignment.)
 	void displayHeader();
-	void mainMenu();
-	void reserveRoomMenu();
+	void mainMenu(string filename);
+	void reserveRoomMenu(string filename);
 	void displayRoomOptions();
 	void displayRoomSummary();
 	double totalDailyGross();
+	void printToFile(string filename, int roomNum);
 };
 
 #endif // !Reservation_h

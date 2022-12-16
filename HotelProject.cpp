@@ -55,11 +55,11 @@ int main()
 			try
 			{
 				userChoice = stoi(userString);
-
-				cout << "\n     You entered: " << userString << endl;
+				// displaying user input to screen
+				//cout << "\n     You entered: " << userString << endl;
 				string filename = userString + ".txt";
 				ofstream{ filename.c_str() };
-				oReservations.mainMenu();
+				oReservations.mainMenu(filename);
 			}
 			catch (invalid_argument)
 			{

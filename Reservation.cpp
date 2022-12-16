@@ -2,6 +2,11 @@
 
 //using namespace std;
 
+int courtyardArray[70] = { 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170 };
+int scenicArray[35] = { 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235 };
+int deluxeArray[15] = { 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250 };
+int penthouseArray[2] = { 301, 302 };
+
 // Separating out the header for easier customizing and re-use when needed.
 void reservations::displayHeader()
 {
@@ -9,19 +14,25 @@ void reservations::displayHeader()
 	cout << "                      **********************************" << endl;
 	cout << "                      * HOTEL GRIFFIN BOOKING SOFTWARE *" << endl;
 	cout << "                      **********************************" << endl;
-	cout << "	                           (v0.1.2)" << endl; // Trying to keep version number consistent with my commits.
+	cout << "	                           (v0.1.4)" << endl; // Trying to keep version number consistent with my commits.
 	cout << endl;
 }
 
-void reservations::mainMenu()
+void reservations::mainMenu(string filename)
 {
 	// Possible main menu revamp will go here.
 	bool loopMainMenu = true;
 	int userChoice = 0;
 	string userString = "0";
+	string formattedDate = filename.substr(0, 2) + "/" + filename.substr(2, 2) + "/" + filename.substr(4, 4);
 
 	while (userChoice != 3) {
 		cout << endl;
+		// Testing some stuff here:
+		//cout << "\n\n\n" << courtyardArray[0] << "\n\n\n";
+		//cout << "\n\n\n\n      " + formattedDate + "\n\n\n";
+		// End testing.
+		cout << "          You are working on " + formattedDate + ".\n";
 		cout << "          What would you like to do?\n";
 		cout << "            1. Reserve a room.\n";
 		cout << "            2. View current inventory and total daily revenue.\n";
@@ -54,12 +65,13 @@ void reservations::mainMenu()
 		if (userChoice == 1)
 		{
 			// Choice 1 should open reservations submenu.
-			reservations::reserveRoomMenu();
+			reservations::reserveRoomMenu(filename);
 		}
 		else if (userChoice == 2)
 		{
 			// Choice 2 should display rooms and summary option.
-			reservations::displayRoomOptions();
+			//reservations::displayRoomOptions();
+			reservations::displayRoomSummary();
 		}
 		else if (userChoice == 3)
 		{
@@ -79,7 +91,7 @@ void reservations::mainMenu()
 	}
 }
 
-void reservations::reserveRoomMenu()
+void reservations::reserveRoomMenu(string filename)
 {
 	// Make some variables to use
 	bool loopReservations = true;
@@ -239,6 +251,10 @@ void reservations::reserveRoomMenu()
 			}
 		}
 	}
+	// testing output
+	//cout << "\n\n\n\n     Some text\n\n\n\n";
+	//reservations::printToFile(filename, 1);
+	// end test
 }
 
 // Display function to show what rooms are still available to book, and current price.
@@ -278,4 +294,15 @@ double reservations::totalDailyGross()
 	total = ((makeCourtyards.showRoomCount() * makeCourtyards.showRoomPrice()) + (makeScenics.showRoomCount() * makeScenics.showRoomPrice()) + (makeDeluxes.showRoomCount() * makeDeluxes.showRoomPrice()) + (makePenthouses.showRoomCount() * makePenthouses.showRoomPrice()) );
 
 	return total;
+}
+
+void reservations::printToFile(string filename, int roomNum)
+{
+	ofstream outputFile;
+
+	outputFile.open(filename.c_str());
+
+	outputFile << "Room #" << courtyardArray[roomNum] << " I got nothing.";
+
+	outputFile.close();
 }
